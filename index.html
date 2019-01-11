@@ -6,97 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        .ingredient, button {
-            font-size: 50px;
-        }
-
-        .bordered {
-            border: 10px solid black;
-        }
-
-        
-
-        /* .ingredient {
-                background-color: #ddd;
-             
-            }
-
-            .ingredient:nth-child(even) {
-                background-color: #888;
-            } */
-    </style>
 </head>
 
 <body>
-    <div id="test"></div>
-
-    <ul class="recipe">
-        <li class="ingredient"></li>
-        <li class="ingredient"></li>
-        <li class="ingredient"></li>
-        <li class="ingredient"></li>
-        <li class="ingredient"></li>
-        <li class="ingredient"></li>
-        <li class="ingredient"></li>
-        <li class="ingredient"></li>
-        <li class="ingredient"></li>
-        <li class="ingredient"></li>
-    </ul>
-
-    <button id="isa">Click</button>
-
     <script>
-        function randomIntFromInterval(min, max) // min and max included
-        {
-            return Math.floor(Math.random() * (max - min + 1) + min);
-        }
+        function ingredientsListGeneration(nItems) {
+            var newRecipe = document.createElement("ul");
+            document.querySelector("body").appendChild(newRecipe);
 
-        function setStyle(idx, elem) {
-            if (idx % 2 === 1) {
-                elem.style.backgroundColor = "rgb(" + randomIntFromInterval(200, 255) + ", 0, 0)"
-            } else {
-                elem.style.backgroundColor = "rgb(0, " + randomIntFromInterval(200, 255) + ", 0)"
-            }
+            var newIngredient
 
-            // elem.style.marginTop = randomIntFromInterval(10, 100) + "px";
-        }
-
-        function setBorder(idx, elem) {
-            if (idx === 3 || idx === 5) {
-                var currentClass = elem.className;
-
-                elem.setAttribute("class", currentClass + " bordered")
+            for (var i = 0; i < nItems; i++) {
+                newIngredient = document.createElement("li");
+                newIngredient.innerHTML = "ingredient " + (i + 1)
+                document.querySelector("ul").appendChild(newIngredient);
             }
         }
 
-        // var domElement = document.getElementById("test")
-        document.querySelectorAll(".ingredient").forEach(function (ingredient, idx) {
-            ingredient.innerHTML = "Ingrediente " + (idx + 1)
-            
-            setStyle(idx, ingredient)
-            // setBorder(idx, ingredient)
-        })
-
-        var clicked = false
-        
-        document.querySelectorAll("#isa")[0].onclick = function () {
-            clicked = !clicked
-
-            if (clicked) {
-                document.querySelectorAll(".ingredient").forEach(function (ing) {
-                    ing.setAttribute("class", "ingredient bordered")
-                })
-            }   else {
-                document.querySelectorAll(".ingredient").forEach(function (ing) {
-                    ing.setAttribute("class", "ingredient")
-                })
-            }
-        }
-
-
-
-
+        ingredientsListGeneration(Math.floor(Math.random() * 100))
     </script>
 </body>
 
