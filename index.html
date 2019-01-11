@@ -6,6 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        body {
+            background: black;
+        }
+
+        html, body, div {
+            margin: 0;
+            padding: 0;
+        }
+
+        div{
+            height: 100px;
+            width: 100px;
+            float: left;
+            background-size: contain;
+            background-repeat: no-repeat;
+            /* background: green; */
+        }
+        /* div:hover {
+            transition: all 0.8s;
+            border-radius: 50%;
+        } */
+    
+    </style>
 </head>
 
 <body>
@@ -23,7 +47,18 @@
             }
         }
 
-        ingredientsListGeneration(Math.floor(Math.random() * 100))
+        // ingredientsListGeneration(Math.floor(Math.random() * 100))
+
+        var body = document.querySelector("body")
+        var butterfly;
+
+        for (var i = 0; i < 150 * 2.5; i++) {
+            butterfly = document.createElement("div");
+            // butterfly.style.backgroundColor = "rgb(" + Math.random () * 255 + ", " + Math.random () * 255 + ", " + Math.random () * 255 + ")"
+            butterfly.style.transform = "rotate(" + Math.random() * 360 + "deg)"
+            butterfly.style.backgroundImage = "url(img/butterfly" + Math.floor(Math.random() * 2) + ".png)"
+            body.appendChild(butterfly);
+        }
     </script>
 </body>
 
